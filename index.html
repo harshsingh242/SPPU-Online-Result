@@ -5,30 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPPU Online Result</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f0f0f0; }
-        .container { width: 50%; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0px 0px 10px gray; }
-        input { padding: 10px; margin: 10px; width: 80%; border: 1px solid gray; border-radius: 5px; }
-        button { padding: 10px; background: blue; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px; 
+            background-color: #f0f0f0; 
+        }
+        .container { 
+            width: 50%; 
+            margin: auto; 
+            padding: 20px; 
+            background: white; 
+            border-radius: 10px; 
+            box-shadow: 0px 0px 10px gray; 
+        }
+        input { 
+            padding: 10px; 
+            margin: 10px; 
+            width: 80%; 
+            border: 1px solid gray; 
+            border-radius: 5px; 
+            font-size: 16px;
+        }
+        button { 
+            padding: 12px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px;
+        }
+        button:hover { background: #0056b3; }
+        #loading {
+            display: none;
+            font-size: 18px;
+            color: red;
+            margin-top: 15px;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/2/2b/Savitribai_Phule_Pune_University_Logo.png" alt="SPPU Logo">
     <h2>🔵 Savitribai Phule Pune University - Online Result</h2>
     <div class="container">
-        <p>Enter Your Seat Number</p>
+        <p><strong>Enter Your Seat Number</strong></p>
         <input type="text" id="seatNo" placeholder="Enter Seat No">
         <button onclick="showResult()">Check Result</button>
+        <p id="loading">🔄 Fetching Your Result...</p>
     </div>
 
     <script>
         function showResult() {
             let seatNo = document.getElementById("seatNo").value;
             if(seatNo === "") {
-                alert("Please enter your seat number!");
+                alert("⚠ Please enter your seat number!");
                 return;
             }
-            // PDF ka path set kar
-            let pdfPath = "Modified_Result.pdf"; // Ye tere modified PDF ka naam hai
-            window.location.href = pdfPath;
+            document.getElementById("loading").style.display = "block";
+            setTimeout(() => {
+                window.location.href = "Modified_Result.pdf"; // Fake Modified PDF
+            }, 3000);
         }
     </script>
 </body>
